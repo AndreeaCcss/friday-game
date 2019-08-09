@@ -10,12 +10,20 @@ let images = [
     {
         name:"bulbasaur",
         src: "https://giantbomb1.cbsistatic.com/uploads/scale_small/13/135472/1891758-001bulbasaur.png"
+    },
+    {
+        name: "squirtle",
+        src: "https://giantbomb1.cbsistatic.com/uploads/scale_small/13/135472/1891764-007squirtle.png"
+    },
+    {
+        name: "ivysaur",
+        src: "https://giantbomb1.cbsistatic.com/uploads/scale_small/13/135472/1891759-002ivysaur.png"
     }
 ];
 
-function getRandomInt(num) {
+function getRandomInt(num, css) {
     let randomNr = Math.floor(Math.random() * num);
-    let value = randomNr + "rem";
+    let value = randomNr + css;
     return value;
 }
 
@@ -25,8 +33,8 @@ for(let i = 0; i < images.length; i++) {
 
     img.alt = images[i].name;
     img.src = images[i].src;
-    img.style.bottom = getRandomInt(30);
-    img.style.left = getRandomInt(60);
+    img.style.bottom = getRandomInt(30, "vh");
+    img.style.left = getRandomInt(60, "vw");
     img.onclick = function () {
         addToFoundItems(images[i]);
     };
@@ -57,7 +65,7 @@ function displayInFooter() {
         foundItemsElement.appendChild(newImage)
     }
     if(foundItems.length == images.length) {
-        alert("You've got them all")
+        setTimeout(function() {alert("You've got them all")}, 1000)
     }   
 };
 
@@ -66,7 +74,7 @@ function submitName() {
     let name = inputField.value;
     
     let header = document.getElementById("header");
-    header.textContent = `${name}'s Items`;
+    header.textContent = `${name}'s Pokemons`;
     inputField.value = null;
 
 }
