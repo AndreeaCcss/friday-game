@@ -8,10 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-    <main id="searchField"></main>
-    <footer>
-        <h1 id="header">Pokemons</h1>
-        <form onsubmit="submitName(); return false">
+    <header>
+        <div id="info">
+            <h1 id="header">Pokemons</h1>
+            <form onsubmit="submitName(); return false">
             <div class="formSection">
                 <label for="name">Name:</label>
                 <input type="text" id="name">
@@ -20,11 +20,10 @@
                 <button type="submit">Add your name</button>
             </div>
         </form>
-        
-        <div id="foundItems">
-
+        <main id="searchField"></main>
         </div>
-    </footer>
+        <div id="foundItems"></div>
+    </header>
     <script src="index.js"></script>
 </body>
 </html>

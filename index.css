@@ -22,6 +22,8 @@ img:hover {
 #foundItems {
     display: flex;
     flex-direction: row;
+    margin: 1em;
+    margin-bottom: 5em;
 }
 
 #foundItems img {
@@ -54,6 +56,13 @@ button:hover{
     cursor: pointer;
 }
 
-footer{
+#info{
     margin: 2em;
+}
+
+#score{
+    font-size: 100px;
+    position: absolute;
+    color: grey;
+    top: 250px;
 }

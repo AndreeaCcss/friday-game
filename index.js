@@ -37,6 +37,7 @@ for(let i = 0; i < images.length; i++) {
     img.style.left = getRandomInt(60, "vw");
     img.onclick = function () {
         addToFoundItems(images[i]);
+        this.style.display="none";
     };
     main.appendChild(img)
 };
@@ -47,11 +48,11 @@ function addToFoundItems(image) {
     if(!foundItems.includes(image)) {
         foundItems.push(image);
     }
-    displayInFooter();
+    displayImages();
     
 };
 
-function displayInFooter() {
+function displayImages() {
     const foundItemsElement = document.getElementById("foundItems");
     foundItemsElement.innerHTML = "";
     
@@ -59,24 +60,37 @@ function displayInFooter() {
         const newImage = document.createElement("img");
         newImage.src = foundItems[i].src;
         newImage.alt= foundItems[i].name;
-        newImage.style.width = "50%";
-        newImage.style = "border-radius: 50%";
-
         foundItemsElement.appendChild(newImage)
     }
     if(foundItems.length == images.length) {
-        setTimeout(function() {alert("You've got them all")}, 1000)
-    }   
+        setTimeout(function() {alert("You've got them all")}, 500)
+    } 
+    
+    const newDiv = document.createElement("div");
+    newDiv.id="score"
+    foundItemsElement.appendChild(newDiv);
+    newDiv.textContent = `${foundItems.length}/${images.length}`; 
 };
 
 function submitName() {
     let inputField = document.getElementById("name");
     let name = inputField.value;
-    
+
+    if (doesNotPassAllValidations(name)) {
+        return null;
+    };
+    name = name.charAt(0).toUpperCase() + name.slice(1);
+
     let header = document.getElementById("header");
     header.textContent = `${name}'s Pokemons`;
     inputField.value = null;
+};
 
+function doesNotPassAllValidations (name) { 
+    if (!name) {
+        alert('You forgot to fill in your name!');
+        return true;
+    } else {
+        return false;
+    }
 }
-
-
